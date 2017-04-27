@@ -45,6 +45,7 @@
 			this.txtPocision = new System.Windows.Forms.TextBox();
 			this.btnInsertar = new System.Windows.Forms.Button();
 			this.btnAgregarInicio = new System.Windows.Forms.Button();
+			this.btnReporteInv = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// lblCodigo
@@ -151,9 +152,9 @@
 			// 
 			// btnReporte
 			// 
-			this.btnReporte.Location = new System.Drawing.Point(232, 164);
+			this.btnReporte.Location = new System.Drawing.Point(341, 201);
 			this.btnReporte.Name = "btnReporte";
-			this.btnReporte.Size = new System.Drawing.Size(103, 31);
+			this.btnReporte.Size = new System.Drawing.Size(218, 31);
 			this.btnReporte.TabIndex = 12;
 			this.btnReporte.Text = "Reporte";
 			this.btnReporte.UseVisualStyleBackColor = true;
@@ -162,7 +163,7 @@
 			// lblInsertar
 			// 
 			this.lblInsertar.AutoSize = true;
-			this.lblInsertar.Location = new System.Drawing.Point(12, 223);
+			this.lblInsertar.Location = new System.Drawing.Point(12, 235);
 			this.lblInsertar.Name = "lblInsertar";
 			this.lblInsertar.Size = new System.Drawing.Size(176, 24);
 			this.lblInsertar.TabIndex = 13;
@@ -170,14 +171,14 @@
 			// 
 			// txtPocision
 			// 
-			this.txtPocision.Location = new System.Drawing.Point(194, 223);
+			this.txtPocision.Location = new System.Drawing.Point(194, 235);
 			this.txtPocision.Name = "txtPocision";
 			this.txtPocision.Size = new System.Drawing.Size(48, 29);
 			this.txtPocision.TabIndex = 14;
 			// 
 			// btnInsertar
 			// 
-			this.btnInsertar.Location = new System.Drawing.Point(248, 223);
+			this.btnInsertar.Location = new System.Drawing.Point(248, 235);
 			this.btnInsertar.Name = "btnInsertar";
 			this.btnInsertar.Size = new System.Drawing.Size(87, 31);
 			this.btnInsertar.TabIndex = 15;
@@ -195,11 +196,22 @@
 			this.btnAgregarInicio.UseVisualStyleBackColor = true;
 			this.btnAgregarInicio.Click += new System.EventHandler(this.btnAgregarInicio_Click);
 			// 
+			// btnReporteInv
+			// 
+			this.btnReporteInv.Location = new System.Drawing.Point(341, 235);
+			this.btnReporteInv.Name = "btnReporteInv";
+			this.btnReporteInv.Size = new System.Drawing.Size(218, 31);
+			this.btnReporteInv.TabIndex = 17;
+			this.btnReporteInv.Text = "Reporte Inverso";
+			this.btnReporteInv.UseVisualStyleBackColor = true;
+			this.btnReporteInv.Click += new System.EventHandler(this.btnReporteInv_Click);
+			// 
 			// frmPrincipal
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(571, 277);
+			this.Controls.Add(this.btnReporteInv);
 			this.Controls.Add(this.btnAgregarInicio);
 			this.Controls.Add(this.btnInsertar);
 			this.Controls.Add(this.txtPocision);
@@ -245,6 +257,7 @@
 		private System.Windows.Forms.TextBox txtPocision;
 		private System.Windows.Forms.Button btnInsertar;
 		private System.Windows.Forms.Button btnAgregarInicio;
+		private System.Windows.Forms.Button btnReporteInv;
 	}
 }
 

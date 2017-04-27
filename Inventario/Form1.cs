@@ -76,6 +76,9 @@ namespace Inventario
 			limpiar();
 		}
 
-		
+		private void btnReporteInv_Click(object sender, EventArgs e)
+		{
+			txtConsola.Text = inventario.reporteInverso();
+		}
 	}
 }

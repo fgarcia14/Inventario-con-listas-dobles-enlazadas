@@ -25,26 +25,25 @@ namespace Inventario
 		/// <param name="nuevo"></param>
 		public void agregarFinal(Producto nuevo)
 		{
-			bool ban = true;
 			if (inicio == null)
 			{
 				inicio = nuevo;
 			}
 			else
 			{
-				temp = inicio;
-				while (temp.siguiente!=null)
-				{
-					if (temp.codigo==nuevo.codigo)
-					{
-						ban = false;
-					}
-					temp = temp.siguiente;
-				}
-				if (temp.codigo!=nuevo.codigo && ban)
-				{
-					temp.siguiente = nuevo;
-				}
+				agregar(inicio, nuevo);
+			}
+		}
+
+		private void agregar(Producto ultimo, Producto nuevo)
+		{
+			if (ultimo.siguiente == null)
+			{
+				ultimo.siguiente = nuevo;
+			}
+			else
+			{
+				agregar(ultimo.siguiente, nuevo);
 			}
 		}
 
@@ -114,6 +113,20 @@ namespace Inventario
 			return datos;
 		}
 
+		public String reporteInverso()
+		{
+			String datos = "";
+			String aux;
+			temp = inicio;
+			while (temp != null)
+			{
+				aux = temp.ToString()+Environment.NewLine;
+				datos = aux + datos;
+				temp = temp.siguiente;
+			}
+			return datos;
+		}
+
 		/// <summary>
 		/// Elimina un producto de la lista, debe proporcionar un numero de codigo del producto que desea eliminar.
 		/// </summary>
@@ -131,14 +144,7 @@ namespace Inventario
 				{
 					if (temp.siguiente.codigo==codigo)
 					{
-						if (temp.siguiente.siguiente == null)
-						{
-							temp.siguiente = null;
-						}
-						else
-						{
-							temp.siguiente = temp.siguiente.siguiente;
-						}
+						temp.siguiente = temp.siguiente.siguiente;
 					}
 					if (temp.siguiente!=null)
 					{
