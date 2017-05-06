@@ -80,5 +80,15 @@ namespace Inventario
 		{
 			txtConsola.Text = inventario.reporteInverso();
 		}
+
+		private void btnBorrarPrimero_Click(object sender, EventArgs e)
+		{
+			inventario.eliminarPrimero();
+		}
+
+		private void btnBorrarUltimo_Click(object sender, EventArgs e)
+		{
+			inventario.eliminarUltimo();
+		}
 	}
 }

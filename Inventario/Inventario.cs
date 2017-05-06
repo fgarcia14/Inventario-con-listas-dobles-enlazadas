@@ -9,6 +9,7 @@ namespace Inventario
 	class Inventario
 	{
 		Producto inicio;
+		Producto ultimo;
 		Producto temp;
 
 		/// <summary>
@@ -17,6 +18,7 @@ namespace Inventario
 		public Inventario()
 		{
 			inicio = null;
+			ultimo = null;
 		}
 
 		/// <summary>
@@ -28,6 +30,7 @@ namespace Inventario
 			if (inicio == null)
 			{
 				inicio = nuevo;
+				ultimo = nuevo;
 			}
 			else
 			{
@@ -39,7 +42,9 @@ namespace Inventario
 		{
 			if (ultimo.siguiente == null)
 			{
+				nuevo.anterior = ultimo;
 				ultimo.siguiente = nuevo;
+				this.ultimo = nuevo;
 			}
 			else
 			{
@@ -57,6 +62,7 @@ namespace Inventario
 			if (inicio==null)
 			{
 				inicio = nuevo;
+				ultimo = nuevo;
 			}
 			else
 			{
@@ -71,6 +77,7 @@ namespace Inventario
 				}
 				if (temp.codigo != nuevo.codigo && ban)
 				{
+					inicio.anterior = nuevo;
 					nuevo.siguiente = inicio;
 					inicio = nuevo;
 				}
@@ -116,13 +123,11 @@ namespace Inventario
 		public String reporteInverso()
 		{
 			String datos = "";
-			String aux;
-			temp = inicio;
+			temp = ultimo;
 			while (temp != null)
 			{
-				aux = temp.ToString()+Environment.NewLine;
-				datos = aux + datos;
-				temp = temp.siguiente;
+				datos += temp.ToString()+Environment.NewLine;
+				temp = temp.anterior;
 			}
 			return datos;
 		}
@@ -133,23 +138,27 @@ namespace Inventario
 		/// <param name="codigo"></param>
 		public void eliminar(int codigo)
 		{
-			temp = inicio;
-			if (temp.codigo==codigo)
+			if (inicio.codigo == codigo)
 			{
-				inicio = temp.siguiente;
+				inicio = inicio.siguiente;
+				inicio.anterior = null;
+			}
+			else if (ultimo.codigo == codigo)
+			{
+				ultimo = ultimo.anterior;
+				ultimo.siguiente = null;
 			}
 			else
 			{
-				while (temp.siguiente!=null)
+				temp = inicio;
+				while (temp != null)
 				{
-					if (temp.siguiente.codigo==codigo)
+					if (temp.codigo==codigo)
 					{
-						temp.siguiente = temp.siguiente.siguiente;
+						temp.anterior.siguiente = temp.siguiente;
+						temp.siguiente.anterior = temp.anterior;
 					}
-					if (temp.siguiente!=null)
-					{
-						temp = temp.siguiente;
-					}
+					temp = temp.siguiente;
 				}
 			}
 		}
@@ -178,6 +187,8 @@ namespace Inventario
 				{
 					producto.siguiente = inicio;
 					inicio = producto;
+
+					producto.siguiente.anterior = inicio;
 				}
 				else
 				{
@@ -187,8 +198,23 @@ namespace Inventario
 					}
 					producto.siguiente = temp.siguiente;
 					temp.siguiente = producto;
+
+
 				}
 			}
+		}
+
+		public void eliminarPrimero()
+		{
+			
+			inicio = inicio.siguiente;
+			inicio.anterior = null;
+		}
+
+		public void eliminarUltimo()
+		{
+			ultimo = ultimo.anterior;
+			ultimo.siguiente = null;
 		}
 	}
 }

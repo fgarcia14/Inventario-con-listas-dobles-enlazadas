@@ -46,6 +46,8 @@
 			this.btnInsertar = new System.Windows.Forms.Button();
 			this.btnAgregarInicio = new System.Windows.Forms.Button();
 			this.btnReporteInv = new System.Windows.Forms.Button();
+			this.btnBorrarPrimero = new System.Windows.Forms.Button();
+			this.btnBorrarUltimo = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// lblCodigo
@@ -206,11 +208,33 @@
 			this.btnReporteInv.UseVisualStyleBackColor = true;
 			this.btnReporteInv.Click += new System.EventHandler(this.btnReporteInv_Click);
 			// 
+			// btnBorrarPrimero
+			// 
+			this.btnBorrarPrimero.Location = new System.Drawing.Point(248, 93);
+			this.btnBorrarPrimero.Name = "btnBorrarPrimero";
+			this.btnBorrarPrimero.Size = new System.Drawing.Size(87, 59);
+			this.btnBorrarPrimero.TabIndex = 18;
+			this.btnBorrarPrimero.Text = "borrar primero";
+			this.btnBorrarPrimero.UseVisualStyleBackColor = true;
+			this.btnBorrarPrimero.Click += new System.EventHandler(this.btnBorrarPrimero_Click);
+			// 
+			// btnBorrarUltimo
+			// 
+			this.btnBorrarUltimo.Location = new System.Drawing.Point(248, 158);
+			this.btnBorrarUltimo.Name = "btnBorrarUltimo";
+			this.btnBorrarUltimo.Size = new System.Drawing.Size(87, 59);
+			this.btnBorrarUltimo.TabIndex = 19;
+			this.btnBorrarUltimo.Text = "borrar ultimo";
+			this.btnBorrarUltimo.UseVisualStyleBackColor = true;
+			this.btnBorrarUltimo.Click += new System.EventHandler(this.btnBorrarUltimo_Click);
+			// 
 			// frmPrincipal
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(571, 277);
+			this.Controls.Add(this.btnBorrarUltimo);
+			this.Controls.Add(this.btnBorrarPrimero);
 			this.Controls.Add(this.btnReporteInv);
 			this.Controls.Add(this.btnAgregarInicio);
 			this.Controls.Add(this.btnInsertar);
@@ -258,6 +282,8 @@
 		private System.Windows.Forms.Button btnInsertar;
 		private System.Windows.Forms.Button btnAgregarInicio;
 		private System.Windows.Forms.Button btnReporteInv;
+		private System.Windows.Forms.Button btnBorrarPrimero;
+		private System.Windows.Forms.Button btnBorrarUltimo;
 	}
 }
 

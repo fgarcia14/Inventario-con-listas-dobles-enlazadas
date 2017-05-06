@@ -14,6 +14,7 @@ namespace Inventario
 		private int _precio;
 
 		public Producto siguiente;
+		public Producto anterior;
 
 		public int codigo
 		{
