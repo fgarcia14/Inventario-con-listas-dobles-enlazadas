@@ -27,15 +27,18 @@ namespace Inventario
 		/// <param name="nuevo"></param>
 		public void agregarFinal(Producto nuevo)
 		{
-			if (inicio == null)
-			{
-				inicio = nuevo;
-				ultimo = nuevo;
-			}
-			else
-			{
-				agregar(inicio, nuevo);
-			}
+            if (buscar(nuevo.codigo)==null)
+            {
+                if (inicio == null)
+                {
+                    inicio = nuevo;
+                    ultimo = nuevo;
+                }
+                else
+                {
+                    agregar(inicio, nuevo);
+                }
+            }
 		}
 
 		private void agregar(Producto ultimo, Producto nuevo)
@@ -58,30 +61,20 @@ namespace Inventario
 		/// <param name="nuevo"></param>
 		public void agregarInicio(Producto nuevo)
 		{
-			bool ban = true;
-			if (inicio==null)
-			{
-				inicio = nuevo;
-				ultimo = nuevo;
-			}
-			else
-			{
-				temp = inicio;
-				while (temp.siguiente!=null)
-				{
-					if (temp.codigo==nuevo.codigo)
-					{
-						ban = false;
-					}
-					temp = temp.siguiente;
-				}
-				if (temp.codigo != nuevo.codigo && ban)
-				{
-					inicio.anterior = nuevo;
-					nuevo.siguiente = inicio;
-					inicio = nuevo;
-				}
-			}
+            if (buscar(nuevo.codigo)==null)
+            {
+                if (inicio==null)
+                {
+                    inicio = nuevo;
+                    ultimo = nuevo;
+                }
+                else
+                {
+                    inicio.anterior = nuevo;
+                    nuevo.siguiente = inicio;
+                    inicio = nuevo;
+                }
+            }
 		}
 
 		/// <summary>
@@ -170,38 +163,31 @@ namespace Inventario
 		/// <param name="pos"></param>
 		public void insertar(Producto producto, int pos)
 		{
-			temp = inicio;
-			bool ban = true;
-			while (temp != null)
-			{
-				if (producto.codigo==temp.codigo)
-				{
-					ban = false;
-				}
-				temp = temp.siguiente;
-			}
-			if (ban)
-			{
-				temp = inicio;
-				if (pos == 1)
-				{
-					producto.siguiente = inicio;
-					inicio = producto;
+            if (buscar(producto.codigo) == null)
+            {
+                temp = inicio;
+                if (pos == 1)
+                {
+                    inicio.anterior = producto;
+                    producto.siguiente = inicio;
+                    inicio = producto;
+                }
+                else
+                {
+                    for (int i = 1; i < pos - 1; i++)
+                    {
+                        if (temp!=null)
+                        {
+                            temp = temp.siguiente;
+                        }
+                    }
+                    producto.siguiente = temp.siguiente;
+                    temp.siguiente = producto;
 
-					producto.siguiente.anterior = inicio;
-				}
-				else
-				{
-					for (int i = 1; i < pos - 1; i++)
-					{
-						temp = temp.siguiente;
-					}
-					producto.siguiente = temp.siguiente;
-					temp.siguiente = producto;
-
-
-				}
-			}
+                    producto.anterior = temp.anterior;
+                    temp.anterior = producto;
+                }
+            }
 		}
 
 		public void eliminarPrimero()
